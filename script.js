@@ -28,13 +28,16 @@ document.querySelector("#switch-theme-button").addEventListener("click", functio
 
   const themeBtnIcon = document.querySelector("#switch-theme-button i");
   const themeBtnText = document.querySelector("#switch-theme-button span");
-  
+  const table = document.querySelector(".table");
+
   if (newTheme === "dark") {
     themeBtnIcon.classList.replace("bx-moon", "bx-sun");
     themeBtnText.textContent = "Light Mode";
+    table.classList.add("table-dark");
   } else {
     themeBtnIcon.classList.replace("bx-sun", "bx-moon");
     themeBtnText.textContent = "Dark Theme";
+    table.classList.remove("table-dark");
   }
 });
 

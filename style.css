@@ -17,6 +17,7 @@
   --navbar-bg: #fff;
   --footer-bg: #f5f5f5;
   --table-head-color: #fff;
+  --form-bg: var(--bg-main);
 }
 
 /* Dark Theme */
@@ -36,6 +37,7 @@
   --navbar-bg: #1e1e1e;
   --footer-bg: #1e1e1e;
   --table-head-color: #fff;
+  --form-bg: var(--bg-main);
 }
 
 a {
@@ -275,11 +277,19 @@ tr.highlight th {
   flex: 11 auto;
 }
 
+/* form elements */
+.form-control, .form-control:focus {
+  background-color: var(--form-bg);
+  color: var(--text-main);
+}
+
+/* Footer */
 footer {
   background-color: var(--footer-bg);
   padding: 1rem;
 }
 
+/* Responsiveness */
 @media (min-width: 768px) {
 
   .input-group-navbar,
