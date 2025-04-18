@@ -87,11 +87,11 @@ export default function SideNav() {
       </ul>
 
       <div className="sidebar-footer">
-        <a id="switch-theme-button" href="#" className="sidebar-link" onClick={toggleTheme}>
+        <a id="switch-theme-button" href="#" className="sidebar-link" onClick={(e) => { e.preventDefault(); toggleTheme(); }}>
           <i className='bx bx-moon' ref={themeBtnIconRef}></i>
           <span ref={themeBtnTextRef}>Dark Theme</span>
         </a>
-        <a href="#" className="sidebar-link" onClick={handleLogout}>
+        <a href="#" className="sidebar-link" onClick={(e) => { e.preventDefault(); handleLogout(); }}>
           <i className='bx bx-log-out'></i>
           <span>Logout</span>
         </a>
