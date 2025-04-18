@@ -1,34 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect } from 'react'
+import { Routes, Route } from "react-router";
+import SideNav from './components/sidenav.component';
+import TopNav from './components/topnav.component';
+import Footer from './components/footer.component';
+import DashboardPage from './pages/dsahboard.page';
+import FormsPage from './pages/forms.page';
 
 function App() {
-  const [count, setCount] = useState(0)
+  useEffect(() => {
+    const savedTheme = sessionStorage.getItem("theme");
+    if (savedTheme) {
+      document.documentElement.setAttribute("data-theme", savedTheme);
+
+      const tables = document.querySelectorAll(".table");
+      if (savedTheme === "dark") {
+        tables.forEach(table => table.classList.add("table-dark"));
+      } else {
+        tables.forEach(table => table.classList.remove("table-dark"));
+      }
+    }
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="wrapper">
+      {/* Side navigation bar */}
+      <SideNav />
+
+      <div className="main">
+        {/* Dashboard navbar */}
+        <TopNav />
+
+        {/* Main dashboard contents */}
+        <main className="content px-3 py-4">
+          <Routes>
+            <Route path="/" element={<DashboardPage />} />
+            <Route path="/forms" element={<FormsPage />} />
+          </Routes>
+        </main>
+
+        {/* Footer content */}
+        <Footer />
+
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+
+    </div>
   )
 }
 
