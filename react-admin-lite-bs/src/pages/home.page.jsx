@@ -1,3 +1,5 @@
+import Footer from "../components/footer.component";
+
 export default function HomePage() {
   return (
     <>
@@ -186,8 +188,10 @@ export default function HomePage() {
           <hr className="featurette-divider" />
 
         </div>
-
+        
       </main>
+      
+      <Footer />
     </>
   );
 }

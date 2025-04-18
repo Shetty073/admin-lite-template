@@ -1,3 +1,4 @@
+import Footer from '../components/footer.component';
 import '../styles/auth.css'
 
 export default function AuthPage() {
@@ -27,6 +28,8 @@ export default function AuthPage() {
           <p className="mt-5 mb-3 text-body-secondary">&copy; 2025</p>
         </form>
       </main>
+
+      <Footer />
     </>
   );
 }
