@@ -1,127 +1,76 @@
+import DashboardCard from "../components/dashboardCard.component";
+import DynamicForm from "../components/dynamicForm.component";
+
 export default function FormsPage() {
+  const cards = [
+    {
+      title: "Member Progress",
+      value: "$75,648",
+      badgeText: "+9.0%",
+      description: "Since Last Month",
+    },
+    {
+      title: "Revenue",
+      value: "$120,300",
+      badgeText: "+12.4%",
+      description: "Growth in Q1",
+    },
+    {
+      title: "New Users",
+      value: "1,250",
+      badgeText: "+5.1%",
+      description: "From Last Week",
+    },
+  ];
+
+  const form1Fields = [
+    { type: "email", name: "email", label: "Email address", placeholder: "Enter your email", helpText: "We'll never share your email." },
+    { type: "password", name: "password", label: "Password", placeholder: "Enter password" },
+    { type: "checkbox", name: "remember", label: "Remember me" },
+    { type: "submit", label: "Submit" },
+  ];
+
+  const form2Fields = [
+    { type: "text", name: "fullName", label: "Full Name", placeholder: "Your full name" },
+    {
+      type: "select", name: "gender", label: "Gender", options: [
+        { value: "", label: "Select" },
+        { value: "male", label: "Male" },
+        { value: "female", label: "Female" },
+        { value: "other", label: "Other" },
+      ]
+    },
+    { type: "textarea", name: "bio", label: "Bio", placeholder: "Write a short bio" },
+    { type: "submit", label: "Send", className: "btn-success" },
+  ];
+
+  const handleFormSubmit = (data) => {
+    console.log("Form Submitted:", data);
+  };
+
   return (
     <div className="container-fluid">
-
       <div className="mb-3">
-        <h3 className="fw-bold fs-4 mb-3 text-capitalize">
-          Admin Dashboard
-        </h3>
+        <h3 className="fw-bold fs-4 mb-3 text-capitalize">Admin Dashboard</h3>
 
         {/* Cards */}
         <div className="row">
-          <div className="col-12 col-md-4">
-            <div className="card shadow">
-              <div className="card-body py-4">
-                <h6 className="mb-2 fw-bold">
-                  Member Progress
-                </h6>
-                <p className="fw-bold">
-                  $75,648
-                </p>
-                <div className="mb-0">
-                  <span className="badge text-success me-2">
-                    +9.0%
-                  </span>
-                  <span className="fw-bold">
-                    Since Last Month
-                  </span>
-                </div>
-              </div>
+          {cards.map((card, idx) => (
+            <div className="col-12 col-md-4" key={idx}>
+              <DashboardCard {...card} />
             </div>
-          </div>
-
-          <div className="col-12 col-md-4">
-            <div className="card shadow">
-              <div className="card-body py-4">
-                <h6 className="mb-2 fw-bold">
-                  Member Progress
-                </h6>
-                <p className="fw-bold">
-                  $75,648
-                </p>
-                <div className="mb-0">
-                  <span className="badge text-success me-2">
-                    +9.0%
-                  </span>
-                  <span className="fw-bold">
-                    Since Last Month
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-12 col-md-4">
-            <div className="card shadow">
-              <div className="card-body py-4">
-                <h6 className="mb-2 fw-bold">
-                  Member Progress
-                </h6>
-                <p className="fw-bold">
-                  $75,648
-                </p>
-                <div className="mb-0">
-                  <span className="badge text-success me-2">
-                    +9.0%
-                  </span>
-                  <span className="fw-bold">
-                    Since Last Month
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-
+          ))}
         </div>
 
         {/* Forms */}
         <div className="row">
-          {/* Form 1 */}
           <div className="col-12 col-md-6">
-            <h3 className="fw-bold fs-4 my-3 text-capitalize">Add data</h3>
-            <form>
-              <div className="mb-3">
-                <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
-              </div>
-              <div className="mb-3">
-                <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                <input type="password" className="form-control" id="exampleInputPassword1" />
-              </div>
-              <div className="mb-3 form-check">
-                <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
-              </div>
-              <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
+            <DynamicForm title="Add data" fields={form1Fields} onSubmit={handleFormSubmit} />
           </div>
-
-          {/* Form 2 */}
           <div className="col-12 col-md-6">
-            <h3 className="fw-bold fs-4 my-3 text-capitalize">
-              Add some more data
-            </h3>
-            <form>
-              <div className="mb-3">
-                <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
-              </div>
-              <div className="mb-3">
-                <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                <input type="password" className="form-control" id="exampleInputPassword1" />
-              </div>
-              <div className="mb-3 form-check">
-                <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
-              </div>
-              <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
+            <DynamicForm title="Add some more data" fields={form2Fields} onSubmit={handleFormSubmit} />
           </div>
-
         </div>
-
       </div>
     </div>
   );
