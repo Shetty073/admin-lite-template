@@ -1,7 +1,7 @@
-import DashboardCard from "../components/dashboardCard.component";
-import DashboardTable from "../components/dashboardTable.component";
+import DashboardCard from "../../components/dashboardCard.component";
+import DashboardTable from "../../components/dashboardTable.component";
 
-export default function DashboardPage() {
+export default function CardsPage() {
   const cards = [
     {
       title: "Member Progress",

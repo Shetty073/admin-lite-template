@@ -67,8 +67,8 @@ export default function SideNav() {
       </div>
 
       <ul className="sidebar-nav">
-        <NavItem icon="bx bxs-user-account" text="Profile" routeTo="/" />
-        <NavItem icon="bx bxs-layer" text="Tasks" routeTo="/forms" />
+        <NavItem icon="bx bxs-user-account" text="Profile" routeTo="/dashboard/cards" />
+        <NavItem icon="bx bxs-layer" text="Tasks" routeTo="/dashboard/forms" />
 
         <DropdownNavItem icon="bx bxs-bug-alt" title="Auth" targetId="auth">
           <NavItem text="Login" />

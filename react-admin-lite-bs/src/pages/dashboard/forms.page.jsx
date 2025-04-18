@@ -1,5 +1,5 @@
-import DashboardCard from "../components/dashboardCard.component";
-import DynamicForm from "../components/dynamicForm.component";
+import DashboardCard from "../../components/dashboardCard.component";
+import DynamicForm from "../../components/dynamicForm.component";
 
 export default function FormsPage() {
   const cards = [

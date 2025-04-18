@@ -1,49 +1,20 @@
-import { useEffect } from 'react'
 import { Routes, Route } from "react-router";
-import SideNav from './components/sidenav.component';
-import TopNav from './components/topnav.component';
-import Footer from './components/footer.component';
-import DashboardPage from './pages/dsahboard.page';
-import FormsPage from './pages/forms.page';
+import AuthPage from "./pages/auth.page";
+import HomePage from "./pages/home.page";
+import DashboardPage from "./pages/dashboard/dashboard.page";
 
 function App() {
-  useEffect(() => {
-    const savedTheme = sessionStorage.getItem("theme");
-    if (savedTheme) {
-      document.documentElement.setAttribute("data-theme", savedTheme);
-
-      const tables = document.querySelectorAll(".table");
-      if (savedTheme === "dark") {
-        tables.forEach(table => table.classList.add("table-dark"));
-      } else {
-        tables.forEach(table => table.classList.remove("table-dark"));
-      }
-    }
-  }, []);
 
   return (
-    <div className="wrapper">
-      {/* Side navigation bar */}
-      <SideNav />
-
-      <div className="main">
-        {/* Dashboard navbar */}
-        <TopNav />
-
-        {/* Main dashboard contents */}
-        <main className="content px-3 py-4">
-          <Routes>
-            <Route path="/" element={<DashboardPage />} />
-            <Route path="/forms" element={<FormsPage />} />
-          </Routes>
-        </main>
-
-        {/* Footer content */}
-        <Footer />
-
-      </div>
-
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/auth" element={<AuthPage />} />
+        <Route path="/dashboard">
+          <Route path="/dashboard/*" element={<DashboardPage />} />
+        </Route>
+      </Routes>
+    </>
   )
 }
 
