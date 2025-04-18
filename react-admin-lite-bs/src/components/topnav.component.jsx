@@ -1,11 +1,15 @@
 export default function TopNav() {
+  const handleSearch = () => {
+    console.debug("Search button was clicked! 🔍")
+  }
+
   return (
     <nav className="navbar navbar-expand px-4 py-3">
       <form action="#" className="d-none d-sm-inline-block">
         <div className="input-group input-group-navbar">
           <input type="text" name="search" id="search" className="form-control border-0 rounded-0 pe-0"
             placeholder="Search..." aria-label="Search" />
-          <button className="btn border-0 rounded-0" type="button">
+          <button className="btn border-0 rounded-0" type="button" onClick={handleSearch}>
             <i className='bx bx-search'></i>
           </button>
         </div>
